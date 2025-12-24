@@ -1,16 +1,24 @@
 # Dependencies
 node_modules/
 package-lock.json
+portfolio-mern/client/node_modules/
+portfolio-mern/server/node_modules/
 
 # Build outputs
 dist/
 build/
+portfolio-mern/client/build/
 *.min.js
 *.min.css
+
+# Environment variables
+.env
+portfolio-mern/server/.env
 
 # Logs
 *.log
 logs/
+npm-debug.log*
 
 # OS files
 .DS_Store
@@ -26,3 +34,6 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
+
+# React
+portfolio-mern/client/.eslintcache
