@@ -107,20 +107,34 @@ const contactForm = document.querySelector('.contact-form');
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Get form values
-    const name = contactForm.querySelector('input[type="text"]').value;
-    const email = contactForm.querySelector('input[type="email"]').value;
-    const subject = contactForm.querySelectorAll('input[type="text"]')[1].value;
-    const message = contactForm.querySelector('textarea').value;
+    // Get form values using name attributes
+    const formData = new FormData(contactForm);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
 
     // Here you would typically send this data to a server
     console.log('Form submitted:', { name, email, subject, message });
     
     // Show success message
-    alert('Thank you for your message! I will get back to you soon.');
+    const messageDiv = contactForm.querySelector('.form-message');
+    messageDiv.textContent = 'Thank you for your message! I will get back to you soon.';
+    messageDiv.style.display = 'block';
+    messageDiv.style.padding = '1rem';
+    messageDiv.style.marginTop = '1rem';
+    messageDiv.style.background = '#d4edda';
+    messageDiv.style.color = '#155724';
+    messageDiv.style.borderRadius = '5px';
+    messageDiv.style.textAlign = 'center';
     
     // Reset form
     contactForm.reset();
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+        messageDiv.style.display = 'none';
+    }, 5000);
 });
 
 // Add Scroll Reveal Animation
